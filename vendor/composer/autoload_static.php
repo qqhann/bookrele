@@ -10,9 +10,25 @@ class ComposerStaticInit2fc4d31c8f39630139b2ae1ee86c403d
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2fc4d31c8f39630139b2ae1ee86c403d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2fc4d31c8f39630139b2ae1ee86c403d::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
