@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // ユーザ名をセット
         $_SESSION['username'] = $username;
         // ログイン完了後に / に遷移
-        header('Location: /~s1511548/');
+        header('Location: '.$__ROOT__.'/');
         exit;
     }
     // 認証が失敗したとき

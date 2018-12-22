@@ -1,5 +1,7 @@
 <?php
 
+$__ROOT__ = '/~s1511548';
+
 /**
  * ログイン状態によってリダイレクトを行うsession_startのラッパー関数
  * 初回時または失敗時にはヘッダを送信してexitする
@@ -10,7 +12,8 @@ function require_unlogined_session()
     @session_start();
     // ログインしていれば / に遷移
     if (isset($_SESSION['username'])) {
-        header('Location: /~s1511548/');
+	global $__ROOT__;
+        header('Location: '.$__ROOT__.'/');
         exit;
     }
 }
@@ -20,7 +23,8 @@ function require_logined_session()
     @session_start();
     // ログインしていなければ /login.php に遷移
     if (!isset($_SESSION['username'])) {
-        header('Location: /~s1511548/login.php');
+	global $__ROOT__;
+        header('Location: '.$__ROOT__.'/login.php');
         exit;
     }
 }
