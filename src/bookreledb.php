@@ -22,3 +22,56 @@ function get_mysqli() {
     };
     return $mysqli;
 }
+
+function select_all_series() {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query(
+        "SELECT name, complete FROM series;"
+    );
+    return $res;
+}
+function select_all_user() {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query(
+        "SELECT email, password FROM user;"
+    );
+    return $res;
+}
+
+function select_search_series($keyword) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT name, complete
+FROM series
+WHERE name LIKE '%{$keyword}%';
+    ");
+    return $res;
+}
+
+function select_series_book($series_id) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT volume, published_at
+FROM book
+WHERE series_id = {$series_id};
+    ");
+    return $res;
+}
+
+function signup($email, $password) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+INSERT INTO user (email, password)
+VALUES ('{$email}', '{$password}');
+    ");
+    return $res;
+}
+function login($email) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT email, password
+FROM user
+WHERE email = '{$email}';
+    ");
+    return $res;
+}

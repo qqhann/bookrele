@@ -1,28 +1,22 @@
 <?php
 
+require_once __DIR__ . '/../src/bookreledb.php';
 require_once __DIR__ . '/../src/session.php';
 require_unlogined_session();
 
-// 事前に生成したユーザごとのパスワードハッシュの配列
-$hashes = [
-    'qqhann' => '$2y$10$7DxauXhtfsn.nvoeegBLr.StRDseljTFgn6iEkGr6uDuhSUk2OdNO',
-]; 
-echo $hashes['qqhann'];
-
-// ユーザから受け取ったユーザ名とパスワード
-$username = filter_input(INPUT_POST, 'username');
-$password = filter_input(INPUT_POST, 'password');
-echo $username;
-echo $password;
-
 // POSTメソッドのときのみ実行
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // ユーザから受け取ったユーザ名とパスワード
+    $email          = filter_input(INPUT_POST, 'email');
+    $password_input = filter_input(INPUT_POST, 'password');
+
+    $res = login('test1@mail.com');
+    $password = $res->fetch_array(MYSQLI_ASSOC)['password'];
     if (
         validate_token(filter_input(INPUT_POST, 'token')) &&
-        password_verify(
-            $password,
-            isset($hashes[$username])
-                ? $hashes[$username]
+        password_verify($password_input,
+            $password !== null
+                ? $password
                 : '$2y$10$abcdefghijklmnopqrstuv'
 		// ユーザ名が存在しないときだけ極端に速くなるのを防ぐ
         )
@@ -31,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // セッションIDの追跡を防ぐ
         session_regenerate_id(true);
         // ユーザ名をセット
-        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
         // ログイン完了後に / に遷移
         header('Location: '.$__ROOT__.'/');
         exit;
@@ -48,7 +42,7 @@ header('Content-Type: text/html; charset=UTF-8');
 <title>ログインページ</title>
 <h1>ログインしてください</h1>
 <form method="post" action="">
-    ユーザ名: <input type="text" name="username" value="">
+    ユーザ名(メールアドレス): <input type="text" name="email" value="">
     パスワード: <input type="password" name="password" value="">
     <input type="hidden" name="token" value="<?=h(generate_token())?>">
     <input type="submit" value="ログイン">
