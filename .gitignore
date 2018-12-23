@@ -2,3 +2,4 @@
 .env
 *.swo
 public/templates_c/
+.DS_Store
