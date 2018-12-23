@@ -14,6 +14,13 @@ function a_tag($uri, $text) {
     $url = gen_url($uri);
     echo "<a href=\"{$url}\">{$text}</a>";
 }
+function form_group_tag($label, $form_name, $form_value) {
+    echo "
+<div class=\"form-group\">
+    <label>{$label}</label>
+    <input type=\"text\" name=\"{$form_name}\" value=\"{$form_value}\" class=\"form-control\">
+</div>";
+}
 function logged_in() {
     @session_start();
     if (isset($_SESSION['email'])) {

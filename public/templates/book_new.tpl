@@ -4,14 +4,8 @@
 
 <form method="post" action="{$form_action}">
     <input type="hidden" name="series_name" value="{$series_name}">
-    <div class="form-group">
-        <label>巻数: </label>
-        <input type="text" name="volume" value="1" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>発売日: </label>
-        <input type="text" name="published_at" value="2018-12-25" class="form-control">
-    </div>
+    {form_group_tag('巻数: ', "volume", "1")}
+    {form_group_tag('発売日: ', "published_at", "2018-12-25")}
     <input type="hidden" name="token" value="{generate_token()}">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
