@@ -6,6 +6,10 @@ function echo_url($uri) {
     global $__ROOT__;
     echo $__ROOT__.$uri;
 }
+function gen_url($uri) {
+    global $__ROOT__;
+    return $__ROOT__.$uri;
+}
 function logged_in() {
     @session_start();
     if (isset($_SESSION['email'])) {
@@ -18,7 +22,7 @@ function current_user() {
     @session_start();
     return $_SESSION['email'];
 }
-    
+
 
 /**
  * ログイン状態によってリダイレクトを行うsession_startのラッパー関数
