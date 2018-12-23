@@ -87,8 +87,8 @@ VALUES ('{$name}', {$complete});
 function insert_new_book($series_name, $volume, $published_at) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-INSERT INTO series (series_name, volume, published_at)
-VALUES ({$series_name}, {$volume}, '{$published_at}');
+INSERT INTO book (series_name, volume, published_at)
+VALUES ('{$series_name}', {$volume}, '{$published_at}');
     ");
     return $res;
 }
@@ -104,8 +104,8 @@ WHERE name = {$name};
 function update_book($series_name, $volume, $published_at) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-UPDATE series SET published_at='{$published_at}'
-WHERE series_name = {$series_name} AND volume = {$volume};
+UPDATE book SET published_at='{$published_at}'
+WHERE series_name = '{$series_name}' AND volume = {$volume};
     ");
     return $res;
 }
@@ -122,7 +122,7 @@ function delete_book($series_name, $volume) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM book
-WHERE series_name = {$series_name} AND volume = {$volume};
+WHERE series_name = '{$series_name}' AND volume = {$volume};
     ");
     return $res;
 }
@@ -136,7 +136,7 @@ function insert_new_subscription($user_email, $series_name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 INSERT INTO subscription (user_email, series_name)
-VALUES ('{$user_email}', {$series_name});
+VALUES ('{$user_email}', '{$series_name}');
     ");
     return $res;
 }
@@ -144,7 +144,7 @@ function delete_subscription($user_email, $series_name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM subscription
-WHERE user_email = {$user_email}, series_name = {$series_name};
+WHERE user_email = {$user_email}, series_name = '{$series_name}';
     ");
     return $res;
 }

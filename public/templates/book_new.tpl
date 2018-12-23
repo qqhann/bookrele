@@ -6,11 +6,11 @@
     <input type="hidden" name="series_name" value="{$series_name}">
     <div class="form-group">
         <label>巻数: </label>
-        <input type="text" name="name" value="1" class="form-control">
+        <input type="text" name="volume" value="1" class="form-control">
     </div>
     <div class="form-group">
         <label>発売日: </label>
-        <input type="text" name="complete" value="2018-12-25" class="form-control">
+        <input type="text" name="published_at" value="2018-12-25" class="form-control">
     </div>
     <input type="hidden" name="token" value="{generate_token()}">
     <button type="submit" class="btn btn-primary">Submit</button>
