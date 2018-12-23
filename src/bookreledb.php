@@ -46,7 +46,7 @@ function get_mysqli() {
 function select_search_series($keyword) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-SELECT id, name, complete
+SELECT name, complete
 FROM series
 WHERE name LIKE '%{$keyword}%';
     ");
@@ -70,7 +70,7 @@ function select_all_series() {
 function select_all_book() {
     $mysqli = get_mysqli();
     $res = $mysqli->query(
-        "SELECT series_id, volume, published_at FROM book;"
+        "SELECT series_name, volume, published_at FROM book;"
     );
     return $res;
 }
@@ -84,45 +84,45 @@ VALUES ('{$name}', {$complete});
     ");
     return $res;
 }
-function insert_new_book($series_id, $volume, $published_at) {
+function insert_new_book($series_name, $volume, $published_at) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-INSERT INTO series (series_id, volume, published_at)
-VALUES ({$series_id}, {$volume}, '{$published_at}');
+INSERT INTO series (series_name, volume, published_at)
+VALUES ({$series_name}, {$volume}, '{$published_at}');
     ");
     return $res;
 }
 // Update
-function update_series($id, $name, $complete) {
+function update_series($complete) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-UPDATE series SET name='{$name}', complete={$complete}
-WHERE id = {$id};
+UPDATE series SET complete={$complete}
+WHERE name = {$name};
     ");
     return $res;
 }
-function update_book($series_id, $volume, $published_at) {
+function update_book($series_name, $volume, $published_at) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 UPDATE series SET published_at='{$published_at}'
-WHERE series_id = {$series_id} AND volume = {$volume};
+WHERE series_name = {$series_name} AND volume = {$volume};
     ");
     return $res;
 }
 // Delete
-function delete_series($id) {
+function delete_series($name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM series
-WHERE id = {$id};
+WHERE name = {$name};
     ");
     return $res;
 }
-function delete_book($series_id, $volume) {
+function delete_book($series_name, $volume) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM book
-WHERE series_id = {$id} AND volume = {$volume};
+WHERE series_name = {$series_name} AND volume = {$volume};
     ");
     return $res;
 }
@@ -132,19 +132,19 @@ WHERE series_id = {$id} AND volume = {$volume};
  * Series Subscripted by User
  * Book of a Series
  */
-function insert_new_subscription($user_email, $series_id) {
+function insert_new_subscription($user_email, $series_name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-INSERT INTO subscription (user_email, series_id)
-VALUES ('{$user_email}', {$series_id});
+INSERT INTO subscription (user_email, series_name)
+VALUES ('{$user_email}', {$series_name});
     ");
     return $res;
 }
-function delete_subscription($user_email, $series_id) {
+function delete_subscription($user_email, $series_name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM subscription
-WHERE user_email = {$user_email}, series_id = {$series_id};
+WHERE user_email = {$user_email}, series_name = {$series_name};
     ");
     return $res;
 }
@@ -153,17 +153,17 @@ function select_series_subscripted_by_user($user_email) {
     $res = $mysqli->query("
 SELECT name, complete
 FROM series
-WHERE series.id = subscription.series_id
+WHERE series.name = subscription.series_name
 AND subscription.user_email = {$user_email};
     ");
     return $res;
 }
-function select_series_book($series_id) {
+function select_series_book($series_name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 SELECT volume, published_at
 FROM book
-WHERE series_id = {$series_id};
+WHERE series_name = {$series_name};
     ");
     return $res;
 }
