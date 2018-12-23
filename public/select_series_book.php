@@ -4,8 +4,8 @@ require_once __DIR__ . '/../src/bookreledb.php';
 require_once __DIR__ . '/../src/session.php';
 // require_logined_session();
 
-if(isset($_GET['series_id'])) {
-    $res = select_series_book($_GET['series_id']);
+if(isset($_GET['series_name'])) {
+    $res = select_series_book($_GET['series_name']);
 }
 
 header('Content-Type: text/html; charset=UTF-8');

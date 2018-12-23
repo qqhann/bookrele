@@ -14,7 +14,7 @@ header('Content-Type: text/html; charset=UTF-8');
 ?>
 
 <?php foreach($res as $row): ?>
-<a href="/~s1511548/select_series_book.php?series_id=<?php echo $row['id'] ?>">
+<a href="/~s1511548/select_series_book.php?series_name=<?php echo $row['name'] ?>">
 <div>
 名前: <?php echo $row['name'] ?>
 完結(真偽値0or1): <?php echo $row['complete'] ?>

@@ -2,6 +2,15 @@
 
 $__ROOT__ = '/~s1511548';
 
+function echo_url($uri) {
+    global $__ROOT__;
+    echo $__ROOT__.$uri;
+}
+function logged_in() {
+    return isset($_SESSION['email']);
+}
+    
+
 /**
  * ログイン状態によってリダイレクトを行うsession_startのラッパー関数
  * 初回時または失敗時にはヘッダを送信してexitする

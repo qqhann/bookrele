@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit2fc4d31c8f39630139b2ae1ee86c403d
 {
     public static $files = array (
+        'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
     );
 

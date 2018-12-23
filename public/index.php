@@ -22,26 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 header('Content-Type: text/html; charset=UTF-8');
 
-?>
-<!DOCTYPE html>
-<title>ブクリリ</title>
-<h1>ようこそ,<?=h($_SESSION['email'])?>さん</h1>
-<a href="/~s1511548/logout.php?token=<?=h(generate_token())?>">ログアウト</a>
+require_once '../vendor/autoload.php';
 
-<form method="post" action="/~s1511548/select_search_series.php">
-    シリーズ本の名前を検索: <input type="text" name="name" value="">
-    <input type="hidden" name="token" value="<?=h(generate_token())?>">
-    <input type="submit" value="検索">
-</form>
-<?php if (http_response_code() === 403): ?>
-<p style="color: red;">Error</p>
-<?php endif; ?>
+ini_set('date.timezone', 'Asia/Tokyo');
+define('MY_TITLE', 'ブクリリ');
 
-<h1>All Series</h1>
-<?php 
-$res = select_all_series();
-foreach($res as $row): ?>
-<div>
-<?php echo $row['name'] ?>
-</div>
-<?php endforeach; ?>
+$smarty = new Smarty();
+
+// 使うテンプレートが入っているディレクトリを指定
+$smarty->setTemplateDir('./templates/');
+
+$smarty->display('index.tpl');

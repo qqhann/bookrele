@@ -1,6 +1,7 @@
 {
     "require": {
         "swiftmailer/swiftmailer": "^5.4",
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "smarty/smarty": "^3.1"
     }
 }

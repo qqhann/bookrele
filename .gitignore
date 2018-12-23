@@ -1,2 +1,4 @@
 *.swp
 .env
+*.swo
+public/templates_c/
