@@ -46,7 +46,7 @@ function get_mysqli() {
 function select_search_series($keyword) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
-SELECT name, complete
+SELECT id, name, complete
 FROM series
 WHERE name LIKE '%{$keyword}%';
     ");
