@@ -7,7 +7,16 @@ function echo_url($uri) {
     echo $__ROOT__.$uri;
 }
 function logged_in() {
-    return isset($_SESSION['email']);
+    @session_start();
+    if (isset($_SESSION['email'])) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function current_user() {
+    @session_start();
+    return $_SESSION['email'];
 }
     
 

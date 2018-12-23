@@ -18,7 +18,7 @@
       <h3 class="masthead-brand">ブクリリ</h3>
       <nav class="nav nav-masthead justify-content-center">
         {if logged_in()}
-        <span class="nav-item">{$user_email}</span>
+        <span class="nav-item">{current_user()}</span>
         <span class="nav-item"><a class="" href="/~s1511548/logout.php?token={generate_token()}">ログアウト</a></span>
         {else}
         <span class="nav-item"><a class="cta" href="{echo_url('/login.php')}">ログイン</a></span>

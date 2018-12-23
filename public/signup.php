@@ -4,11 +4,6 @@ require_once __DIR__ . '/../src/bookreledb.php';
 require_once __DIR__ . '/../src/session.php';
 require_unlogined_session();
 
-// 事前に生成したユーザごとのパスワードハッシュの配列
-$hashes = [
-    'qqhann' => '$2y$10$7DxauXhtfsn.nvoeegBLr.StRDseljTFgn6iEkGr6uDuhSUk2OdNO',
-]; 
-
 // ユーザから受け取ったユーザ名とパスワード
 $email    = filter_input(INPUT_POST, 'email');
 $password = filter_input(INPUT_POST, 'password');
