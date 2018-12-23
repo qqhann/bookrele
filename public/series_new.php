@@ -7,7 +7,7 @@ require_once __DIR__ . '/../src/session.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name     = filter_input(INPUT_POST, 'name');
     $complete = filter_input(INPUT_POST, 'complete');
-    $res = select_search_series($name);
+    $res = insert_new_series($name, $complete);
     if (
         validate_token(filter_input(INPUT_POST, 'token')) &&
         true
