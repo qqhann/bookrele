@@ -18,6 +18,6 @@
 </div>
 {/foreach}
 
-{a_tag('/book_new.php?series_name='.$series_name, 'addnew')}
+{a_tag("/book_new.php?series_name=`$series_name`", 'addnew')}
 
 {include file='footer.tpl'}
