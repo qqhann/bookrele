@@ -163,7 +163,7 @@ function select_series_book($series_name) {
     $res = $mysqli->query("
 SELECT volume, published_at
 FROM book
-WHERE series_name = {$series_name};
+WHERE series_name = '{$series_name}';
     ");
     return $res;
 }

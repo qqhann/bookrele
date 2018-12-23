@@ -1,12 +1,10 @@
 {include file='base.tpl' page_title={$smarty.const.MY_TITLE}}
 
 {foreach $res as $row}
-<a href="{echo_url('/series.php?series_name=')}{$row['name']}">
 <div>
-名前: {$row['name']}
-完結(真偽値0or1): {$row['complete']}
+巻数: {$row['volume']}
+公開日: {$row['published_at']}
 </div>
-</a>
 {/foreach}
 
 {include file='footer.tpl'}
