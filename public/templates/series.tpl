@@ -13,7 +13,7 @@
 <div>
 巻数: {$row['volume']}
 公開日: {$row['published_at']}
-{a_tag('/book_edit.php', 'edit')}
+{a_tag("/book_edit.php?series_name=`$series_name`&volume=`$row['volume']`", 'edit')}
 {a_tag('/book_delete.php', 'delete')}
 </div>
 {/foreach}
