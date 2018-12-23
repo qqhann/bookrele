@@ -15,15 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $published_at      = filter_input(INPUT_POST, 'published_at');
     $res = update_book($series_name, $volume, $published_at);
     if (
-        validate_token(filter_input(INPUT_POST, 'token')) &&
         true
     ) {
-        header('Location: '.$__ROOT__.'/');
+        header('Location: '.$__ROOT__.'/series.php?series_name='.$series_name);
         exit;
     }
     // 認証が失敗したとき
     // 「403 Forbidden」
-    http_response_code(403);
+    http_response_code(500);
 }
 
 require_once '../vendor/autoload.php';
