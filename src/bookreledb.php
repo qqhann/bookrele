@@ -35,7 +35,7 @@ function get_mysqli() {
  * [x] Delete Series
  * [x] Delete Book
  * [x] New Subscription
- * [x] Delete Subscription 
+ * [x] Delete Subscription
  * [x] Series Subscripted by User
  * [x] Book of a Series
  * [x] Sign up / New User
@@ -93,7 +93,7 @@ VALUES ({$series_name}, {$volume}, '{$published_at}');
     return $res;
 }
 // Update
-function update_series($complete) {
+function update_series($name, $complete) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 UPDATE series SET complete={$complete}
@@ -128,7 +128,7 @@ WHERE series_name = {$series_name} AND volume = {$volume};
 }
 /*
  * New Subscription
- * Delete Subscription 
+ * Delete Subscription
  * Series Subscripted by User
  * Book of a Series
  */
