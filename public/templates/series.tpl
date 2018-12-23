@@ -1,23 +1,23 @@
 {include file='base.tpl' page_title={$smarty.const.MY_TITLE}}
 
 seriesname
-edit
-delete
+{a_tag('/', 'edit')}
+{a_tag('/', 'delete')}
 {if logged_in()}
-subscribe
+{a_tag('/', 'subscribe')}
 {else}
-login to subscribe
+{a_tag('/', 'login to subscribe')}
 {/if}
 
 {foreach $res as $row}
 <div>
 巻数: {$row['volume']}
 公開日: {$row['published_at']}
-edit
-delete
+{a_tag('/', 'edit')}
+{a_tag('/', 'delete')}
 </div>
 {/foreach}
 
-addnew
+{a_tag('/', 'addnew')}
 
 {include file='footer.tpl'}

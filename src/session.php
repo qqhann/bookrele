@@ -10,6 +10,10 @@ function gen_url($uri) {
     global $__ROOT__;
     return $__ROOT__.$uri;
 }
+function a_tag($uri, $text) {
+    $url = gen_url($uri);
+    echo "<a href=\"{$url}\">{$text}</a>";
+}
 function logged_in() {
     @session_start();
     if (isset($_SESSION['email'])) {
