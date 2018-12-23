@@ -17,5 +17,6 @@ $smarty = new Smarty();
 // 使うテンプレートが入っているディレクトリを指定
 $smarty->setTemplateDir('./templates/');
 
+$smarty->assign("series_name", $series_name);
 $smarty->assign("res", $res);
 $smarty->display('series.tpl');
