@@ -1,5 +1,17 @@
 {include file='base.tpl' page_title={$smarty.const.MY_TITLE}}
 
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">ブクリリ ガイド</h4>
+  <p>
+  シリーズの編集，消去，購読（！）ができます．<br>
+  気になるシリーズを購読しよう．
+  </p>
+  <p>
+  本の各巻のついか，編集，消去もここから行えます．
+  </p>
+</div>
+
+
 <h4>
     {$series_name}シリーズの本一覧
 </h4>

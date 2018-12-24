@@ -1,6 +1,14 @@
 {include file='base.tpl' page_title={$smarty.const.MY_TITLE}}
 
+
+
 <h1>ユーザ登録してください</h1>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">ブクリリ ガイド</h4>
+  <p>
+  実際のメールアドレスを登録すると購読メールを受け取れます．
+  </p>
+</div>
 <form method="post" action="">
     {form_group_tag('メールアドレス: ', "email", "")}
     {form_group_password_tag('パスワード: ')}

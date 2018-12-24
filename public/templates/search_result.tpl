@@ -1,5 +1,23 @@
 {include file='base.tpl' page_title={$smarty.const.MY_TITLE}}
 
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">ブクリリ ガイド</h4>
+  <p>
+  検索結果です．<br>
+  見つけたシリーズをクリックして詳細を確認しましょう．
+  </p>
+  <p>
+  ログインして購読すれば，購読しているシリーズの検索結果も表示されます．<br>
+  さらに，メールアドレスをクリックするとメールが届くかも？
+  </p>
+  <p>
+  見つけたい本がなかったら，追加しましょう．<br>
+  最初の一人になれる！
+  </p>
+</div>
+
+
 <h4>検索結果</h4>
 <h5>購読中</h5>
 {if $subscripted_res}
