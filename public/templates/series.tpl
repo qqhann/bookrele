@@ -8,7 +8,7 @@
 {a_tag_btn("/series_delete.php?series_name=`$series_name`&delete", 'delete')}
 {if logged_in()}
     {if is_subscripted(current_user(), $series_name)}
-        {a_tag_btn("/subscribe.php?series_name=`$series_name`", 'subscribed')}
+        {a_tag_btn_disabled("/subscribe.php?series_name=`$series_name`", 'subscribed')}
     {else}
         {a_tag_btn("/subscribe.php?series_name=`$series_name`&subscribe", 'subscribe')}
     {/if}
