@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $complete = filter_input(INPUT_POST, 'complete');
     $res = insert_new_series($name, $complete);
     if (
-        validate_token(filter_input(INPUT_POST, 'token')) &&
         true
     ) {
         header('Location: '.$__ROOT__.'/');
@@ -34,3 +33,4 @@ $smarty->setTemplateDir('./templates/');
 
 $smarty->assign("form_action", gen_url("/series_new.php"));
 $smarty->display('series_new.tpl');
+ 

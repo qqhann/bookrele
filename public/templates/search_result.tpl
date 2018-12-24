@@ -7,6 +7,7 @@
         {$row['name']} （{complete_str($row['complete'])}）
     </div></a>
 {/foreach}
-    
+
+{a_tag_btn("/series_new.php", 'シリーズ本を登録')}
 
 {include file='footer.tpl'}
