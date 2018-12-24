@@ -97,7 +97,7 @@ function update_series($name, $complete) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 UPDATE series SET complete={$complete}
-WHERE name = {$name};
+WHERE name = '{$name}';
     ");
     return $res;
 }
@@ -114,7 +114,7 @@ function delete_series($name) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
 DELETE FROM series
-WHERE name = {$name};
+WHERE name = '{$name}';
     ");
     return $res;
 }
