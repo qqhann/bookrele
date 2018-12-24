@@ -11,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (logged_in()) {
         $user_email = current_user();
         $subscripted_res = select_search_series_subscripted_by_user($user_email, $name);
+    } else {
+        $subscripted_res = 0;
     }
 }
 

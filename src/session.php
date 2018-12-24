@@ -33,6 +33,13 @@ function form_group_tag($label, $form_name, $form_value) {
     <input type=\"text\" name=\"{$form_name}\" value=\"{$form_value}\" class=\"form-control\">
 </div>";
 }
+function form_group_password_tag($label) {
+    echo "
+<div class=\"form-group\">
+    <label>{$label}</label>
+    <input type=\"password\" name=\"password\" class=\"form-control\">
+</div>";
+}
 function complete_str($complete) {
     if ($complete == 1) {
         return "完結";

@@ -19,9 +19,10 @@
       <nav class="nav nav-masthead justify-content-center">
         {if logged_in()}
             <span class="nav-item">{a_tag("/mail_subscription.php", current_user())}</span>
-            <span class="nav-item"><a class="" href="/~s1511548/logout.php?token={generate_token()}">ログアウト</a></span>
+            <span class="nav-item">{a_tag_btn("/logout.php?token={generate_token()}", "ログアウト")}</span>
         {else}
-            <span class="nav-item"><a class="cta" href="{echo_url('/login.php')}">ログイン</a></span>
+            <span class="nav-item">{a_tag_btn("/signup.php", "新規登録")}</span>
+            <span class="nav-item">{a_tag_btn('/login.php', "ログイン")}</span>
         {/if}
       </nav>
     </div>

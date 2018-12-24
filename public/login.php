@@ -35,18 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(403);
 }
 
-header('Content-Type: text/html; charset=UTF-8');
+require_once '../vendor/autoload.php';
 
-?>
-<!DOCTYPE html>
-<title>ログインページ</title>
-<h1>ログインしてください</h1>
-<form method="post" action="">
-    ユーザ名(メールアドレス): <input type="text" name="email" value="">
-    パスワード: <input type="password" name="password" value="">
-    <input type="hidden" name="token" value="<?=h(generate_token())?>">
-    <input type="submit" value="ログイン">
-</form>
-<?php if (http_response_code() === 403): ?>
-<p style="color: red;">ユーザ名またはパスワードが違います</p>
-<?php endif; ?>
+ini_set('date.timezone', 'Asia/Tokyo');
+define('MY_TITLE', 'ブクリリ');
+
+$smarty = new Smarty();
+
+// 使うテンプレートが入っているディレクトリを指定
+$smarty->setTemplateDir('./templates/');
+
+$smarty->display('login.tpl');
+
