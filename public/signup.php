@@ -6,23 +6,28 @@ require_unlogined_session();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ユーザから受け取ったユーザ名とパスワード
-    $email    = filter_input(INPUT_POST, 'email');
-    $password = filter_input(INPUT_POST, 'password');
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    $email          = filter_input(INPUT_POST, 'email');
+    $password       = filter_input(INPUT_POST, 'password');
+    $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
     if (
         validate_token(filter_input(INPUT_POST, 'token'))
     ) {
-        $res = signup($email, $password);
+        $res = signup($email, $password_hashed);
         
-        // 認証が成功したとき
-        // セッションIDの追跡を防ぐ
-        session_regenerate_id(true);
-        // ユーザ名をセット
-        $_SESSION['email'] = $email;
-        // ログイン完了後に / に遷移
-        header('Location: '.$__ROOT__.'/');
-        exit;
+        if ($res) {
+            // 認証が成功したとき
+            // セッションIDの追跡を防ぐ
+            session_regenerate_id(true);
+            // ユーザ名をセット
+            $_SESSION['email'] = $email;
+            // ログイン完了後に / に遷移
+            header('Location: '.$__ROOT__.'/');
+            exit;
+        } else {
+            http_response_code(403);
+        }
+        
     }
     // 認証が失敗したとき
     // 「403 Forbidden」
