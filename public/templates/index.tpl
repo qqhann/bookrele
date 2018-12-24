@@ -12,6 +12,4 @@
 <p style="color: red;">Error</p>
 {/if}
 
-<a href="{echo_url("/all_tables.php")}">All tables</a>
-
 {include file='footer.tpl'}

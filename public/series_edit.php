@@ -13,15 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $complete = filter_input(INPUT_POST, 'complete');
     $res = update_series($name, $complete);
     if (
-        validate_token(filter_input(INPUT_POST, 'token')) &&
         true
     ) {
-        header('Location: '.$__ROOT__.'/');
+        header('Location: '.$__ROOT__.'/series.php?series_name='.$name);
         exit;
     }
     // 認証が失敗したとき
     // 「403 Forbidden」
-    http_response_code(403);
+    http_response_code(500);
 }
 
 header('Content-Type: text/html; charset=UTF-8');

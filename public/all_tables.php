@@ -9,6 +9,8 @@ $res = select_all_series();
 foreach($res as $row): ?>
 <div>
 <?php echo $row['name'] ?>
+<?php echo complete_str($row['complete']) ?>
+(<?php echo $row['complete'] ?>)
 </div>
 <?php endforeach; ?>
 

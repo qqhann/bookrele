@@ -14,12 +14,23 @@ function a_tag($uri, $text) {
     $url = gen_url($uri);
     echo "<a href=\"{$url}\">{$text}</a>";
 }
+function a_tag_btn($uri, $text) {
+    $url = gen_url($uri);
+    echo "<a href=\"{$url}\" class=\"btn btn-outline-secondary\">{$text}</a>";
+}
 function form_group_tag($label, $form_name, $form_value) {
     echo "
 <div class=\"form-group\">
     <label>{$label}</label>
     <input type=\"text\" name=\"{$form_name}\" value=\"{$form_value}\" class=\"form-control\">
 </div>";
+}
+function complete_str($complete) {
+    if ($complete == 1) {
+        return "完結";
+    } else {
+        return "未完";
+    }
 }
 function logged_in() {
     @session_start();
