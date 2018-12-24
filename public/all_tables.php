@@ -8,6 +8,7 @@ require_once __DIR__ . '/../src/session.php';
 $res = select_all_series();
 foreach($res as $row): ?>
 <div>
+<?php print_r($row) ?>
 <?php echo $row['name'] ?>
 <?php echo complete_str($row['complete']) ?>
 (<?php echo $row['complete'] ?>)
@@ -19,6 +20,7 @@ foreach($res as $row): ?>
 $res = select_all_book();
 foreach($res as $row): ?>
 <div>
+<?php print_r($row) ?>
 <?php echo $row['series_name'] ?>
 <?php echo $row['volume'] ?>
 </div>
@@ -30,6 +32,7 @@ $res = select_all_user();
 foreach($res as $row): ?>
 <div>
 <?php echo $row['email'] ?>
+パスワードはハッシュ化されて保存されています．
 </div>
 <?php endforeach; ?>
 
@@ -39,6 +42,7 @@ $mysqli = get_mysqli();
 $res = $mysqli->query("select * from subscription;");
 foreach($res as $row): ?>
 <div>
+<?php print_r($row) ?>
 <?php echo $row['user_email'] ?>
 <?php echo $row['series_name'] ?>
 </div>
