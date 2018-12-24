@@ -130,6 +130,7 @@ WHERE series_name = '{$series_name}' AND volume = {$volume};
  * New Subscription
  * Delete Subscription
  * Subscriptions by a User
+ * Search Subscriptions by a User with series_name
  * Is subscripted
  * Book of a Series
  */
@@ -156,6 +157,17 @@ SELECT name, complete
 FROM series
 WHERE series.name = subscription.series_name
 AND subscription.user_email = {$user_email};
+    ");
+    return $res;
+}
+function select_search_series_subscripted_by_user($user_email, $keyword) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT series.name, series.complete
+FROM series, subscription
+WHERE subscription.user_email = '{$user_email}'
+AND series.name LIKE '%{$keyword}%'
+AND subscription.series_name = series.name;
     ");
     return $res;
 }
