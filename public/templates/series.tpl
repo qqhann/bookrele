@@ -7,7 +7,7 @@
 {a_tag_btn("/series_edit.php?name=`$series_name`", 'edit')}
 {a_tag_btn("/series_delete.php?series_name=`$series_name`&delete", 'delete')}
 {if logged_in()}
-{a_tag_btn('/', 'subscribe')}
+{a_tag_btn("/subscribe.php?series_name=`$series_name`&subscribe", 'subscribe')}
 {else}
 {a_tag('/login.php', 'login to subscribe')}
 {/if}

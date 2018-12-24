@@ -129,7 +129,8 @@ WHERE series_name = '{$series_name}' AND volume = {$volume};
 /*
  * New Subscription
  * Delete Subscription
- * Series Subscripted by User
+ * Subscriptions by a User
+ * Is subscripted
  * Book of a Series
  */
 function insert_new_subscription($user_email, $series_name) {
@@ -157,6 +158,16 @@ WHERE series.name = subscription.series_name
 AND subscription.user_email = {$user_email};
     ");
     return $res;
+}
+function is_subscripted($user_email, $series_name) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT count(*)
+FROM subscription
+WHERE user_email = '{$user_email}' AND series_name = '{$series_name}';
+    ");
+    $count = mysqli_fetch_array($res)[0];
+    return ($count == 1) ? true : false;
 }
 function select_series_book($series_name) {
     $mysqli = get_mysqli();

@@ -32,3 +32,14 @@ foreach($res as $row): ?>
 <?php echo $row['email'] ?>
 </div>
 <?php endforeach; ?>
+
+<h1>Subscription: 購読</h1>
+<?php 
+$mysqli = get_mysqli();
+$res = $mysqli->query("select * from subscription;");
+foreach($res as $row): ?>
+<div>
+<?php echo $row['user_email'] ?>
+<?php echo $row['series_name'] ?>
+</div>
+<?php endforeach; ?>
