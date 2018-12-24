@@ -18,6 +18,10 @@ function a_tag_btn($uri, $text) {
     $url = gen_url($uri);
     echo "<a href=\"{$url}\" class=\"btn btn-outline-secondary\">{$text}</a>";
 }
+function a_tag_btn_primary($uri, $text) {
+    $url = gen_url($uri);
+    echo "<a href=\"{$url}\" class=\"btn btn-primary\">{$text}</a>";
+}
 function a_tag_btn_disabled($uri, $text) {
     $url = gen_url($uri);
     echo "<a href=\"{$url}\" class=\"btn btn-outline-secondary disabled\">{$text}</a>";

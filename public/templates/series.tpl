@@ -28,6 +28,6 @@
 </div>
 {/foreach}
 
-{a_tag_btn("/book_new.php?series_name=`$series_name`", 'addnew')}
+{a_tag_btn_primary("/book_new.php?series_name=`$series_name`", '新しく巻を追加')}
 
 {include file='footer.tpl'}

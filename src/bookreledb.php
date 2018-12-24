@@ -160,6 +160,21 @@ AND subscription.user_email = {$user_email};
     ");
     return $res;
 }
+function select_series_book_subscripted_by_user($user_email) {
+    $mysqli = get_mysqli();
+    $res = $mysqli->query("
+SELECT series.name, series.complete
+FROM series, subscription
+WHERE subscription.user_email = '{$user_email}'
+AND series.name = subscription.series_name;
+    ");
+    return $res;
+}
+// "
+// SELECT name, complete, published_at FROM book, series, subscription WHERE book.series_name = subscription.series_name
+// AND series.name = subscription.series_name
+// AND subscription.user_email = {$user_email};
+// "
 function select_search_series_subscripted_by_user($user_email, $keyword) {
     $mysqli = get_mysqli();
     $res = $mysqli->query("
